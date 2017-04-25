@@ -1,6 +1,6 @@
 {
   "name": "meta-init",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "init plugin for meta",
   "main": "index.js",
   "bin": {
@@ -29,6 +29,9 @@
   },
   "homepage": "https://github.com/mateodelnorte/meta-init#readme",
   "dependencies": {
-    "debug": "^2.3.3"
+    "async": "^2.3.0",
+    "debug": "^2.3.3",
+    "git-remote-origin-url": "^2.0.0",
+    "inquirer": "^3.0.6"
   }
 }

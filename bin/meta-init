@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const debug = require('debug')('meta-init');
+const maybeImportFromGitSlave = require('../lib/maybeImportFromGitSlave');
 const path = require('path');
 const util = require('util');
 
@@ -38,10 +39,29 @@ if (buffer) {
 
 if (meta && ! force) return console.error(`A .meta file already exists in ${process.cwd()}. User --force to overwrite.`);
 
-console.log(`creating a .meta file in ${process.cwd()}`);
+
 
 const metaJson = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'support', '.meta')).toString());
 
-// TODO: detect git repositories and add to metaJson
+if (fs.existsSync('./.gitslave')) {
 
-fs.writeFileSync(path.join(process.cwd(), '.meta'), JSON.stringify(metaJson, null, ' '));
+  maybeImportFromGitSlave(function (err, projectPairs) {
+    if (err) throw err;
+
+    for (let key in projectPairs) {
+      metaJson.projects[key] = projectPairs[key];
+    }
+
+    console.log(`creating a .meta file in ${process.cwd()} with contents \n${JSON.stringify(metaJson, null, '  ')}`);
+
+    fs.writeFileSync(path.join(process.cwd(), '.meta'), JSON.stringify(metaJson, null, ' '));
+
+  });
+
+} else {
+
+  console.log(`creating a .meta file in ${process.cwd()}`);
+
+  fs.writeFileSync(path.join(process.cwd(), '.meta'), JSON.stringify(metaJson, null, ' '));
+
+}
