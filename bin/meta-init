@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const debug = require('debug')('meta-init');
+const getMetaFile = require('get-meta-file');
 const maybeImportFromGitSlave = require('../lib/maybeImportFromGitSlave');
 const path = require('path');
 const util = require('util');
@@ -16,30 +17,9 @@ if (process.argv[2] === '--force') {
   force = true;
 }
 
-var meta = null; 
-var buffer = null;
-
-const metaLocation = path.join(process.cwd(), '.meta');
-
-try {
-  buffer = fs.readFileSync(metaLocation);
-  debug(`.meta file found at ${metaLocation}`);
-} catch (e) {
-  debug(`no .meta file found at ${metaLocation}: ${e}`);
-}
-
-if (buffer) {
-  try {
-    meta = JSON.parse(buffer.toString());
-    debug(`.meta file contents parsed: ${util.inspect(meta, null, Infinity)}`);
-  } catch (e) {
-    debug(`error parsing .meta JSON: ${e}`);
-  }
-}
+var meta = getMetaFile({ warn: false });
 
 if (meta && ! force) return console.error(`A .meta file already exists in ${process.cwd()}. User --force to overwrite.`);
-
-
 
 const metaJson = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'support', '.meta')).toString());
 
