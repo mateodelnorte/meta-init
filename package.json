@@ -1,6 +1,6 @@
 {
   "name": "meta-init",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "init plugin for meta",
   "main": "index.js",
   "bin": {
@@ -31,7 +31,7 @@
   "dependencies": {
     "async": "^2.3.0",
     "debug": "^2.3.3",
-    "get-meta-file": "0.0.4",
+    "get-meta-file": "^0.0.5",
     "git-remote-origin-url": "^2.0.0",
     "inquirer": "^3.0.6"
   }
