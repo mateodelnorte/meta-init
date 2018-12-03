@@ -1,4 +1,7 @@
 # meta-init
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/mateodelnorte/meta-init.svg)](https://greenkeeper.io/)
+
 init plugin for [meta](https://github.com/mateodelnorte/meta)
 
 
