@@ -7,11 +7,14 @@
     "meta-init": "./bin/meta-init"
   },
   "scripts": {
-    "test": "npm test"
+    "test": "echo \"No tests.\"",
+    "commit": "git-cz",
+    "semantic-release": "semantic-release",
+    "travis-deploy-once": "travis-deploy-once"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/mateodelnorte/meta-init.git"
+    "url": "https://github.com/mateodelnorte/meta-init.git"
   },
   "keywords": [
     "init",
@@ -23,6 +26,10 @@
     "metarepo"
   ],
   "author": "hi@iammattwalters.com",
+  "contributors": [
+    "hi@iammattwalters.com",
+    "pat@patscott.io"
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/mateodelnorte/meta/issues"
@@ -34,5 +41,9 @@
     "get-meta-file": "^0.0.5",
     "git-remote-origin-url": "^2.0.0",
     "inquirer": "^3.0.6"
+  },
+  "devDependencies": {
+    "commitizen": "^3.0.5",
+    "cz-conventional-changelog": "^2.1.0"
   }
 }
