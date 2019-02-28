@@ -30,6 +30,7 @@ if (fs.existsSync('./.gitslave')) {
 
     for (let key in projectPairs) {
       metaJson.projects[key] = projectPairs[key];
+      metaJson.branches[key] = 'master';
     }
 
     console.log(`creating a .meta file in ${process.cwd()} with contents \n${JSON.stringify(metaJson, null, '  ')}`);
