@@ -37,7 +37,7 @@
     "async": "^2.3.0",
     "debug": "^4.0.0",
     "get-meta-file": "^1.0.0",
-    "git-remote-origin-url": "^2.0.0",
+    "git-remote-origin-url": "^3.0.0",
     "inquirer": "^6.0.0"
   },
   "devDependencies": {
