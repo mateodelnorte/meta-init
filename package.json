@@ -41,7 +41,7 @@
     "inquirer": "^6.0.0"
   },
   "devDependencies": {
-    "commitizen": "3.0.5",
+    "commitizen": "3.0.7",
     "cz-conventional-changelog": "2.1.0"
   }
 }
