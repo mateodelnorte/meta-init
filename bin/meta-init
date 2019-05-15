@@ -32,9 +32,11 @@ if (fs.existsSync('./.gitslave')) {
       metaJson.projects[key] = projectPairs[key];
     }
 
-    console.log(`creating a .meta file in ${process.cwd()} with contents \n${JSON.stringify(metaJson, null, '  ')}`);
+    const metaString = getMetaFile.format(metaJson);
 
-    fs.writeFileSync(path.join(process.cwd(), '.meta'), JSON.stringify(metaJson, null, ' '));
+    console.log(`creating a .meta file in ${process.cwd()} with contents\n${metaString.trim()}`);
+
+    fs.writeFileSync(path.join(process.cwd(), '.meta'), metaString);
 
   });
 
@@ -42,6 +44,6 @@ if (fs.existsSync('./.gitslave')) {
 
   console.log(`creating a .meta file in ${process.cwd()}`);
 
-  fs.writeFileSync(path.join(process.cwd(), '.meta'), JSON.stringify(metaJson, null, ' '));
+  fs.writeFileSync(path.join(process.cwd(), '.meta'), getMetaFile.format(metaJson));
 
 }
