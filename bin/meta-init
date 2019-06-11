@@ -19,13 +19,12 @@ if (process.argv[2] === '--force') {
 
 var meta = getMetaFile({ warn: false });
 
-if (meta && ! force) return console.error(`A .meta file already exists in ${process.cwd()}. User --force to overwrite.`);
+if (meta && !force) return console.error(`A .meta file already exists in ${process.cwd()}. User --force to overwrite.`);
 
 const metaJson = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'support', '.meta')).toString());
 
 if (fs.existsSync('./.gitslave')) {
-
-  maybeImportFromGitSlave(function (err, projectPairs) {
+  maybeImportFromGitSlave(function(err, projectPairs) {
     if (err) throw err;
 
     for (let key in projectPairs) {
@@ -37,13 +36,9 @@ if (fs.existsSync('./.gitslave')) {
     console.log(`creating a .meta file in ${process.cwd()} with contents\n${metaString.trim()}`);
 
     fs.writeFileSync(path.join(process.cwd(), '.meta'), metaString);
-
   });
-
 } else {
-
   console.log(`creating a .meta file in ${process.cwd()}`);
 
   fs.writeFileSync(path.join(process.cwd(), '.meta'), getMetaFile.format(metaJson));
-
 }
