@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/mateodelnorte/meta-init.svg?branch=master)](https://travis-ci.com/mateodelnorte/meta-init)
+
 # meta-init
 init plugin for [meta](https://github.com/mateodelnorte/meta)
 
