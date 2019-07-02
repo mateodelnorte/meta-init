@@ -11,15 +11,11 @@ if (process.argv[2] === '--help') {
   return console.log(`\n  usage:\n\n    meta init\n`);
 }
 
-let force = false;
+const metaPath = path.resolve('.meta');
 
-if (process.argv[2] === '--force') {
-  force = true;
+if (fs.existsSync(metaPath) && process.argv[2] !== '--force') {
+  return console.error(`A .meta file already exists in ${process.cwd()}. Use --force to override.`);
 }
-
-var meta = getMetaFile({ warn: false });
-
-if (meta && !force) return console.error(`A .meta file already exists in ${process.cwd()}. User --force to overwrite.`);
 
 const metaJson = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'support', '.meta')).toString());
 
@@ -35,10 +31,10 @@ if (fs.existsSync('./.gitslave')) {
 
     console.log(`creating a .meta file in ${process.cwd()} with contents\n${metaString.trim()}`);
 
-    fs.writeFileSync(path.join(process.cwd(), '.meta'), metaString);
+    fs.writeFileSync(metaPath, metaString);
   });
 } else {
   console.log(`creating a .meta file in ${process.cwd()}`);
 
-  fs.writeFileSync(path.join(process.cwd(), '.meta'), getMetaFile.format(metaJson));
+  fs.writeFileSync(metaPath, getMetaFile.format(metaJson));
 }
