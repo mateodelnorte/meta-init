@@ -47,7 +47,7 @@
     "debug": "^4.0.0",
     "get-meta-file": "^1.0.0",
     "git-remote-origin-url": "^3.0.0",
-    "inquirer": "^6.0.0"
+    "inquirer": "^7.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "8.0.0",
