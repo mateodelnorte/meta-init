@@ -20,7 +20,7 @@ if (fs.existsSync(metaPath) && process.argv[2] !== '--force') {
 const metaJson = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'support', '.meta')).toString());
 
 if (fs.existsSync('./.gitslave')) {
-  maybeImportFromGitSlave(function(err, projectPairs) {
+  maybeImportFromGitSlave(function (err, projectPairs) {
     if (err) throw err;
 
     for (let key in projectPairs) {
